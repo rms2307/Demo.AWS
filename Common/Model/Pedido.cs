@@ -1,9 +1,17 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Common.Model
 {
+    public enum StatusDoPedido
+    {
+        Coletado = 0,
+        Pago = 1,
+        Faturado = 2,
+    };
+
     [DynamoDBTable("pedidos")]
     public class Pedido
     {
@@ -21,10 +29,9 @@ namespace Common.Model
 
         public string Justificativa { get; set; }
 
-        public string Status { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public StatusDoPedido Status { get; set; }
 
-        public bool Pago { get; set; }
-
-        public bool Faturado { get; set; }
+        public bool Cancelado { get; set; }
     }
 }
