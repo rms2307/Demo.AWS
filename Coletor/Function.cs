@@ -25,7 +25,7 @@ public class Function
                 try
                 {
                     await ProcessarValorDoPedido(pedido);
-                    await AmazonUtil.EnviarParaFila(EnumFilasSQS.pedido, pedido);
+                    await AmazonUtil.EnviarParaFila(EnumFilasSQS.Pedido, pedido);
                     context.Logger.LogInformation($"Pedido coletado com sucesso: {pedido.Id}");
                 }
                 catch (Exception ex)
@@ -33,7 +33,7 @@ public class Function
                     context.Logger.LogError($"ERRO: {ex.Message}");
                     pedido.Justificativa = ex.Message;
                     pedido.Cancelado = true;
-                    await AmazonUtil.EnviarParaFila(EnumFilasSNS.falha, pedido);
+                    await AmazonUtil.EnviarParaFila(EnumFilasSNS.Falha, pedido);
                 }
 
                 await pedido.SalvarAsync();

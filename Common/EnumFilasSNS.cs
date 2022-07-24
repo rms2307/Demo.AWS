@@ -2,7 +2,7 @@
 {
     public enum EnumFilasSNS
     {
-        falha,
-        faturado
+        Falha,
+        Faturado
     }
 }

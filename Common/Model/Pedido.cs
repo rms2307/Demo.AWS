@@ -10,6 +10,7 @@ namespace Common.Model
         Coletado = 0,
         Pago = 1,
         Faturado = 2,
+        Reservado = 3,
     };
 
     [DynamoDBTable("pedidos")]

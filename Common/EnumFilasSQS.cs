@@ -2,8 +2,8 @@
 {
     public enum EnumFilasSQS
     {
-        pedido,
-        reservado,
-        pago
+        Pedido,
+        Reservado,
+        Pago
     }
 }
